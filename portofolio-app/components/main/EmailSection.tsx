@@ -30,12 +30,13 @@ const EmailSection = () => {
       if (res.ok) {
         alert("Email sent successfully!");
       } else {
-        alert("Failed to send email: " + result.error?.message || "Unknown error");
+        alert("Failed to send email: " + (result.error?.message || "Unknown error"));
       }
     } catch (err) {
       console.error(err);
       alert("Network error occurred while sending the email.");
     }
+
   };
 
   return (

@@ -7,7 +7,7 @@ import * as THREE from 'three';
 // @ts-expect-error
 import * as random from 'maath/random/dist/maath-random.esm';
 
-const StarBackground = (props: any) => {
+const StarBackground = () => {
   const ref = useRef<THREE.Points | null>(null);
   const [sphere] = useState(() =>
     random.inSphere(new Float32Array(3000), { radius: 1.2 })
@@ -27,7 +27,6 @@ const StarBackground = (props: any) => {
         positions={sphere}
         stride={3}
         frustumCulled
-        {...props}
       >
         <PointMaterial
           transparent
@@ -41,15 +40,14 @@ const StarBackground = (props: any) => {
   );
 };
 
-
 const StarsCanvas = () => (
-    <div className='w-full h-auto fixed inset-0 z-[18]'>
-        <Canvas camera={{position: [0, 0, 1]}}>
-        <Suspense fallback={null}>
-            <StarBackground />
-        </Suspense>
-        </Canvas>
-    </div>
-)
+  <div className="w-full h-auto fixed inset-0 z-[18]">
+    <Canvas camera={{ position: [0, 0, 1] }}>
+      <Suspense fallback={null}>
+        <StarBackground />
+      </Suspense>
+    </Canvas>
+  </div>
+);
 
 export default StarsCanvas;

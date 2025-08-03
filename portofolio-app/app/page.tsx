@@ -1,7 +1,6 @@
 import Encryption from "@/components/main/Encryption";
 import Hero from "@/components/main/Hero";
 import Skills from "@/components/main/Skills";
-import Image from "next/image";
 import AboutSection from "@/components/main/AboutSection";
 import ProjectsSection from "@/components/main/ProjectsSection";
 import EmailSection from "@/components/main/EmailSection";
