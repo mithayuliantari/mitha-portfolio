@@ -9,14 +9,6 @@ const projectsData = [
   {
     id: 1,
     title: "Project 1",
-    description: "A simple landing page built with HTML and CSS.",
-    image: "/images/projects/project1.png",
-    gitUrl: "https://github.com/mithayuliantari/Forest-Nest",
-    previewUrl: "https://forestnest.netlify.app"
-  },
-  {
-    id: 2,
-    title: "Project 2",
     description: "A collaborative team project developed using React.js.",
     image: "/images/projects/project2.png",
     gitUrl: "/",
@@ -37,6 +29,14 @@ const projectsData = [
     image: "/images/projects/project4.png",
     gitUrl: "https://github.com/mithayuliantari/mitha-portfolio",
     previewUrl: "https://mitha-portfolio-ten.vercel.app"
+  },
+  {
+    id: 2,
+    title: "Project 2",
+    description: "A simple landing page built with HTML and CSS.",
+    image: "/images/projects/project1.png",
+    gitUrl: "https://github.com/mithayuliantari/Forest-Nest",
+    previewUrl: "https://forestnest.netlify.app"
   },
 
 ];
