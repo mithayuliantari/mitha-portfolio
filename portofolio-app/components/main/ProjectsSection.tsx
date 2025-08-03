@@ -8,7 +8,7 @@ import { slideInFromTop } from '@/utils/motion';
 const projectsData = [
   {
     id: 1,
-    title: "Project 1",
+    title: "Web Profile TKJ",
     description: "A collaborative team project developed using React.js.",
     image: "/images/projects/project2.png",
     gitUrl: "/",
@@ -16,7 +16,7 @@ const projectsData = [
   },
   {
     id: 2,
-    title: "Project 2",
+    title: "Saffari Ville",
     description: "A simple landing page designed with Bootstrap, currently optimized for desktop.",
     image: "/images/projects/project3.png",
     gitUrl: "https://github.com/mithayuliantari/Saffari-Ville",
@@ -24,7 +24,7 @@ const projectsData = [
   },
   {
     id: 3,
-    title: "Project 3",
+    title: "My Portfolio Website",
     description: "A personal portfolio site built using Next.js and Tailwind CSS.",
     image: "/images/projects/project4.png",
     gitUrl: "https://github.com/mithayuliantari/mitha-portfolio",
@@ -32,7 +32,7 @@ const projectsData = [
   },
   {
     id: 4,
-    title: "Project 4",
+    title: "Forest Nest",
     description: "A simple landing page built with HTML and CSS.",
     image: "/images/projects/project1.png",
     gitUrl: "https://github.com/mithayuliantari/Forest-Nest",
