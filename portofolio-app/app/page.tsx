@@ -1,0 +1,29 @@
+import Encryption from "@/components/main/Encryption";
+import Hero from "@/components/main/Hero";
+import Skills from "@/components/main/Skills";
+import Image from "next/image";
+import AboutSection from "@/components/main/AboutSection";
+import ProjectsSection from "@/components/main/ProjectsSection";
+import EmailSection from "@/components/main/EmailSection";
+import Footer from "@/components/main/Footer";
+
+export default function Home() {
+  return (
+    <main className="h-full w-full">
+      {/* Hero tidak diberi padding container */}
+      <Hero />
+
+      {/* Bagian lainnya tetap diberi padding agar rapi */}
+      <div className="flex flex-col gap-20 px-4 sm:px-6 md:px-12 lg:px-24 mx-auto">
+        <Skills />
+        <Encryption />
+        <AboutSection />
+        <ProjectsSection />
+        <EmailSection />
+      </div>
+
+      <Footer />
+    </main>
+  );
+}
+
