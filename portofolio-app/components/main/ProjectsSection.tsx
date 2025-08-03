@@ -15,24 +15,24 @@ const projectsData = [
     previewUrl: "https://web-profile-tkj.netlify.app"
   },
   {
-    id: 3,
-    title: "Project 3",
+    id: 2,
+    title: "Project 2",
     description: "A simple landing page designed with Bootstrap, currently optimized for desktop.",
     image: "/images/projects/project3.png",
     gitUrl: "https://github.com/mithayuliantari/Saffari-Ville",
     previewUrl: "https://safari-ville.netlify.app"
   },
   {
-    id: 4,
-    title: "Project 4",
+    id: 3,
+    title: "Project 3",
     description: "A personal portfolio site built using Next.js and Tailwind CSS.",
     image: "/images/projects/project4.png",
     gitUrl: "https://github.com/mithayuliantari/mitha-portfolio",
     previewUrl: "https://mitha-portfolio-ten.vercel.app"
   },
   {
-    id: 2,
-    title: "Project 2",
+    id: 4,
+    title: "Project 4",
     description: "A simple landing page built with HTML and CSS.",
     image: "/images/projects/project1.png",
     gitUrl: "https://github.com/mithayuliantari/Forest-Nest",
