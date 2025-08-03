@@ -28,12 +28,13 @@ const EmailSection = () => {
       const result = await res.json();
 
       if (res.ok) {
-        alert("Email terkirim!");
+        alert("Email sent successfully!");
       } else {
-        alert("Gagal mengirim email: " + result.error?.message || "Unknown error");
+        alert("Failed to send email: " + result.error?.message || "Unknown error");
       }
     } catch (err) {
-      alert("Terjadi kesalahan jaringan");
+      console.error(err);
+      alert("Network error occurred while sending the email.");
     }
   };
 
@@ -60,7 +61,7 @@ const EmailSection = () => {
           transition={{ delay: 0.2, duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h5 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4">Let's Contact Me</h5>
+          <h5 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4">Let&apos;s Contact Me</h5>
           <p className="text-[#ADB7BE] mb-6 max-w-md">
             I&apos;m currently looking for new opportunities. My inbox is always open.
             Whether you have a question or just want to say hi, I&apos;ll try my best 

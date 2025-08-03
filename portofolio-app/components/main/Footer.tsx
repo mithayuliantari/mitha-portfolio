@@ -18,7 +18,7 @@ const Footer = () => {
       className='z-[42] footer border border-t-[#33353F] border-l-transparent border-r-transparent text-white'
     >
       <div className='container p-12 flex justify-between'>
-        <span>Mitchu Dev</span>
+        <span>Junior Web Developer</span>
         <p className='text-slate-400'>All right reserved.</p>
       </div>
     </motion.footer>
