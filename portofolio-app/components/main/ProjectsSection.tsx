@@ -8,36 +8,37 @@ import { slideInFromTop } from '@/utils/motion';
 const projectsData = [
   {
     id: 1,
-    title: "Landing Page",
-    description: "Project 1",
+    title: "Project 1",
+    description: "A simple landing page built with HTML and CSS.",
     image: "/images/projects/project1.png",
-    gitUrl: "/",
+    gitUrl: "https://github.com/mithayuliantari/Forest-Nest",
     previewUrl: "https://forestnest.netlify.app"
   },
   {
     id: 2,
-    title: "Landing Page 1",
-    description: "Project 2",
+    title: "Project 2",
+    description: "A collaborative team project developed using React.js.",
     image: "/images/projects/project2.png",
     gitUrl: "/",
-    previewUrl: "/"
+    previewUrl: "https://web-profile-tkj.netlify.app"
   },
   {
     id: 3,
-    title: "Landing Page 2",
-    description: "Project 3",
+    title: "Project 3",
+    description: "A simple landing page designed with Bootstrap, currently optimized for desktop.",
     image: "/images/projects/project3.png",
-    gitUrl: "/",
-    previewUrl: "/"
+    gitUrl: "https://github.com/mithayuliantari/Saffari-Ville",
+    previewUrl: "https://safari-ville.netlify.app"
   },
-  // {
-  //   id: 4,
-  //   title: "Landing Page 3",
-  //   description: "Project 4",
-  //   image: "/images/projects/project4.jpg",
-  //   gitUrl: "/",
-  //   previewUrl: "/"
-  // },
+  {
+    id: 4,
+    title: "Project 4",
+    description: "A personal portfolio site built using Next.js and Tailwind CSS.",
+    image: "/images/projects/project4.png",
+    gitUrl: "https://github.com/mithayuliantari/mitha-portfolio",
+    previewUrl: "https://mitha-portfolio-ten.vercel.app"
+  },
+
 ];
 
 const ProjectsSection = () => {

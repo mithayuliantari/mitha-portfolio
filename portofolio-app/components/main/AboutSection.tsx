@@ -70,7 +70,7 @@ const AboutSection = () => {
             alt="About section image"
             width={400}
             height={400}
-            className="rounded-lg w-full max-w-[400px] h-auto"
+            className="rounded-lg w-full max-w-[400px] h-auto object-cover max-h-[500px]"
           />
         </motion.div>
 
@@ -98,7 +98,7 @@ const AboutSection = () => {
           </h2>
 
           <p className="text-sm sm:text-base lg:text-lg leading-relaxed max-w-[550px]">
-            I&apos;m a student at SMK Negeri 1 Denpasar majoring in Software Engineering. I have built several simple projects using HTML, CSS, and JavaScript. Although I&apos;m still learning, I&apos;m highly motivated to improve my skills and gain more experience in programming. I enjoy solving problems, learning from others, and working both independently and as part of a team. Currently, I&apos;m doing an internship to deepen my understanding of real-world development practices.
+            My name is <strong>Kadek Mitha Yuliantari</strong>, and I&apos;m a student at SMK Negeri 1 Denpasar majoring in Software Engineering. I have built several simple projects using HTML, CSS, and JavaScript. Although I&apos;m still learning, I&apos;m highly motivated to improve my skills and gain more experience in programming. I enjoy solving problems, learning from others, and working both independently and as part of a team. Currently, I&apos;m doing an internship to deepen my understanding of real-world development practices.
           </p>
 
           <div className="flex flex-wrap gap-4 mt-8">

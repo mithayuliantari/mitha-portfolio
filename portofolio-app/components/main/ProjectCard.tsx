@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { CodeBracketIcon, EyeIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -14,7 +14,23 @@ interface ProjectCardProps {
   index?: number;
 }
 
-const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl, index = 0 }: ProjectCardProps) => {
+const ProjectCard = ({
+  imgUrl,
+  title,
+  description,
+  gitUrl,
+  previewUrl,
+  index = 0,
+}: ProjectCardProps) => {
+  const [showIcons, setShowIcons] = useState(false);
+
+  const handleToggleIcons = () => {
+    // Toggle aktif saat layar kecil (HP/tab)
+    if (window.innerWidth <= 1024) {
+      setShowIcons(!showIcons);
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -23,19 +39,28 @@ const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl, index = 0
       viewport={{ once: true }}
       className="flex flex-col w-full"
     >
-      <div className="h-45 md:h-48 lg:h-50 rounded-t-xl relative group overflow-hidden">
+      <div
+        onClick={handleToggleIcons}
+        className="h-45 md:h-48 lg:h-50 rounded-t-xl relative group overflow-hidden cursor-pointer"
+      >
         <Image
           src={imgUrl}
           alt={title}
           fill
           className="object-center group-hover:scale-110 transition duration-500"
         />
-        <div className="absolute top-0 left-0 w-full h-full z-[30] bg-black/80 hidden group-hover:flex items-center justify-center transition-all duration-500">
+
+        <div
+          className={`absolute top-0 left-0 w-full h-full z-[30] bg-black/80
+            ${showIcons ? 'flex' : 'hidden'} group-hover:flex
+            items-center justify-center transition-all duration-500`}
+        >
           <a
             href={gitUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="h-14 w-14 mr-2 border-2 relative rounded-full border-[#ADB7BE] hover:border-white"
+            onClick={(e) => e.stopPropagation()} 
           >
             <CodeBracketIcon className="h-10 w-10 text-[#ADB7BE] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group-hover:text-white" />
           </a>
@@ -45,6 +70,7 @@ const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl, index = 0
             target="_blank"
             rel="noopener noreferrer"
             className="h-14 w-14 border-2 relative rounded-full border-[#ADB7BE] hover:border-white"
+            onClick={(e) => e.stopPropagation()}
           >
             <EyeIcon className="h-10 w-10 text-[#ADB7BE] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group-hover:text-white" />
           </a>
