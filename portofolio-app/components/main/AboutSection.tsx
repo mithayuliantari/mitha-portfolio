@@ -90,7 +90,7 @@ const AboutSection = () => {
             className="Welcome-box flex items-center py-2 px-3 border border-[#7042f88b] opacity-[0.9] mb-4 w-max"
           >
             <SparklesIcon className="text-[#b49bff] mr-2 h-5 w-5" />
-            <h1 className="Welcome-text text-sm">Who I Am</h1>
+            <h1 className="Welcome-text text-sm">Who I&apos;m</h1>
           </motion.div>
 
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-4">
@@ -98,7 +98,7 @@ const AboutSection = () => {
           </h2>
 
           <p className="text-sm sm:text-base lg:text-lg leading-relaxed max-w-[550px]">
-            I am a student at SMK Negeri 1 Denpasar majoring in Software Engineering. I have built several simple projects using HTML, CSS, and JavaScript. Although I am still learning, I am highly motivated to improve my skills and gain more experience in programming. I enjoy solving problems, learning from others, and working both independently and as part of a team. Currently, I am doing an internship to deepen my understanding of real-world development practices.
+            I&apos;m a student at SMK Negeri 1 Denpasar majoring in Software Engineering. I have built several simple projects using HTML, CSS, and JavaScript. Although I&apos;m still learning, I&apos;m highly motivated to improve my skills and gain more experience in programming. I enjoy solving problems, learning from others, and working both independently and as part of a team. Currently, I&apos;m doing an internship to deepen my understanding of real-world development practices.
           </p>
 
           <div className="flex flex-wrap gap-4 mt-8">
