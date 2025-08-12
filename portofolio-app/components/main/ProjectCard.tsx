@@ -78,8 +78,8 @@ const ProjectCard = ({
       </div>
 
       <div className="text-white rounded-b-xl mt-3 bg-white/10 backdrop-blur-sm border border-white/20 py-6 px-4">
-        <h5 className="text-xl font-semibold mb-2">{title}</h5>
-        <p className="text-[#ADB7BE]">{description}</p>
+        <h5 className="text-lg md:text-xl font-semibold mb-2">{title}</h5>
+        <p className="text-[#ADB7BE] text-sm md:text-base">{description}</p>
       </div>
     </motion.div>
   );

@@ -25,7 +25,7 @@ const SkillText = () => {
 
       <motion.p
         variants={slideInFromRight(0.5)}
-        className='text-sm sm:text-base md:text-lg text-gray-300 mt-4'
+        className='cursive text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mt-4'
       >
         Never miss a task, deadline or idea
       </motion.p>

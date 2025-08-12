@@ -22,16 +22,16 @@ const Navbar = () => {
             className='cursor-pointer hover:animate-slowspin'
           />
           <span 
-          id='#home'
           className='ml-2 font-bold text-gray-300 hidden md:block'>Junior Web Developer</span>
         </a>
 
         {/* Desktop Menu */}
         <div className='hidden md:flex items-center gap-5'>
           <div className='flex gap-20 px-6 py-2 rounded-full bg-[#0300145e] border border-[#7042f861] text-gray-200'>
-            <a href="#about-me" className='hover:text-[#7042f8]'>About Me</a>
             <a href="#skills" className='hover:text-[#7042f8]'>Skills</a>
+            <a href="#about-me" className='hover:text-[#7042f8]'>About Me</a>
             <a href="#projects" className='hover:text-[#7042f8]'>Projects</a>
+            <a href="#blog" className='hover:text-[#7042f8]'>Blog</a>
           </div>
         </div>
 

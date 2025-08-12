@@ -6,7 +6,7 @@ import SkillText from '../sub/SkillText'
 const Skills = () => {
   return (
     <section 
-      id='skills'
+      id="skills"
       className='relative flex flex-col items-center justify-center gap-10 px-4 sm:px-6 md:px-12 lg:px-24 py-28 mt-32 mb-2 md:mb-10 lg:mb-18'
     >
       {/* Teks Judul */}
