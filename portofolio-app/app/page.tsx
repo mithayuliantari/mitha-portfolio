@@ -8,7 +8,7 @@ import Footer from "@/components/main/Footer";
 import BlogSection from "@/components/main/BlogSection";
 
 export default async function Home() {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? "http://laravel-blog-api.up.railway.app";
   const res = await fetch(`${apiUrl}/api/blogs`, { cache: "no-store" });
   const blogs = res.ok ? await res.json() : [];
 
