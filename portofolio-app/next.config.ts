@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ["localhost", "127.0.0.1"], // tambahkan domain yang diizinkan
+    domains: ["localhost", "127.0.0.1", "blog-admin-panel.up.railway.app"], // tambahkan domain yang diizinkan
   },
 };
 
