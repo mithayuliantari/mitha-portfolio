@@ -17,8 +17,9 @@ const TAB_DATA = [
         <li>CSS</li>
         <li>JavaScript</li>
         <li>Tailwind CSS</li>
-        <li>UI/UX Design (Basic)</li>
-        <li>Laravel (Basic)</li>
+        <li>UI/UX Design</li>
+        <li>Laravel</li>
+        <li>Wordpress</li>
       </ul>
     )
   },
@@ -54,10 +55,11 @@ const AboutSection = () => {
   };
 
   return (
-    <section id="about-me" className="text-white z-[25] py-12 px-4 md:mb-20">
+    <section id="about-me" 
+      className="relative w-full min-h-screen flex items-center justify-center px-4 py-16 sm:py-20 md:py-24 lg:py-32 text-white z-[25]"
+      >
       <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         
-        {/* Gambar dengan animasi slide dari kiri */}
         <motion.div
           variants={slideInFromLeft(0.5)}
           initial="hidden"
@@ -74,7 +76,6 @@ const AboutSection = () => {
           />
         </motion.div>
 
-        {/* Konten teks dengan animasi slide dari kanan */}
         <motion.div
           variants={slideInFromRight(0.8)}
           initial="hidden"

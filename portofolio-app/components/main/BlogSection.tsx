@@ -2,87 +2,126 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { slideInFromTop } from "@/utils/motion";
+import { CalendarIcon } from "@heroicons/react/24/outline";
 
 type Blog = {
   id: number;
   title: string;
-  description: string;
+  slug: string;
+  excerpt: string | null;
   image: string | null;
-  link: string | null;
+  created_at: string;
+  category?: { name: string; slug: string };
+  tags?: { name: string; slug: string }[];
 };
 
-
 export default function BlogSection({ blogs }: { blogs: Blog[] }) {
+  const limited = blogs.slice(0, 6); 
+
   return (
-    <section id="blog" className="w-full z-[39]">
-      {/* Judul */}
+    <section
+      id="blog"
+      className="relative w-full min-h-screen flex flex-col items-center justify-center px-4 py-16 sm:py-20 md:py-24 lg:py-32 text-white z-[39]"
+    >
       <motion.h2
         variants={slideInFromTop}
         initial="hidden"
         whileInView="visible"
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-center mb-12 text-white"
+        className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-center mb-12"
       >
         Blog & Articles
       </motion.h2>
 
-      {/* Card Blog */}
-      <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {blogs.map((blog, index) => (
-        <motion.div
-          key={blog.id}
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          whileHover={{
-            scale: 1.03,
-            transition: { type: "tween", duration: 0.3, ease: "easeOut" }
-          }}
-          transition={{ duration: 0.5, delay: index * 0.1 }}
-          viewport={{ once: true }}
-          className="bg-[#0f1724] border border-gray-700 rounded-xl overflow-hidden shadow-md hover:shadow-lg flex flex-col"
-        >
+      <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full max-w-7xl">
+        {limited.map((blog, index) => {
+          let spanClass = "";
 
-            {blog.image ? (
-              <Image
-                src={blog.image}
-                alt={blog.title}
-                width={500}
-                height={300}
-                className="w-full h-48 object-cover"
-              />
-            ) : (
-              <div className="w-full h-48 bg-gray-800 flex items-center justify-center text-gray-500">
-                No Image
-              </div>
-            )}
+          if (index === 3) {
+            spanClass = "lg:col-span-2";
+          }
 
-            <div className="p-5 flex flex-col flex-1">
-              <h3 className="text-lg md:text-xl font-semibold mb-2 text-white">
-                {blog.title}
-              </h3>
-              <p className="text-[#ADB7BE] text-sm md:text-base flex-1">
-                {blog.description}
-              </p>
-              <div className="mt-4">
-                {blog.link ? (
-                  <a
-                    href={blog.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
+          return (
+            <motion.div
+              key={blog.id}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{
+                scale: 1.03,
+                transition: { type: "tween", duration: 0.3, ease: "easeOut" },
+              }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className={`bg-gradient-to-b from-[#1a1330] backdrop-blur-xl border border-[#2a1b4d] rounded-xl overflow-hidden shadow-md hover:shadow-lg flex flex-col transition ${spanClass}`}
+            >
+              {blog.image ? (
+                <Image
+                  src={blog.image}
+                  alt={blog.title}
+                  width={500}
+                  height={300}
+                  className="w-full h-48 object-cover"
+                />
+              ) : (
+                <div className="w-full h-48 bg-gray-800 flex items-center justify-center text-gray-500">
+                  No Image
+                </div>
+              )}
+
+              <div className="p-5 flex flex-col flex-1">
+                <div className="flex items-center text-gray-400 text-sm mb-2">
+                  <CalendarIcon className="w-4 h-4 mr-1" />
+                  {new Date(blog.created_at).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </div>
+
+                <h3 className="text-lg md:text-xl font-semibold mb-2 text-white">
+                  {blog.title}
+                </h3>
+                <p className="text-[#ADB7BE] text-sm md:text-base flex-1">
+                  {blog.excerpt ?? ""}
+                </p>
+
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {blog.tags?.map((tag) => (
+                    <span
+                      key={tag.slug}
+                      className="welcome-box border border-[#7042f88b] font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400 text-sm px-2 py-1 rounded"
+                    >
+                      {tag.name}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="mt-4">
+                  <Link
+                    href={`/blogs/${blog.slug}`}
+                    prefetch
                     className="text-blue-400 hover:text-blue-300 font-medium"
                   >
                     Read More →
-                  </a>
-                ) : (
-                  <span className="text-sm text-gray-400">No external link</span>
-                )}
+                  </Link>
+                </div>
               </div>
-            </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          );
+        })}
+      </div>
+
+      <div className="mt-10 flex justify-center">
+        <button
+          onClick={() => window.location.href = '/blogs'}
+          className="py-4 px-10 button-primary text-center text-white cursor-pointer rounded-lg max-w-[200px]"
+        >
+          All Blogs →
+        </button>
       </div>
     </section>
   );

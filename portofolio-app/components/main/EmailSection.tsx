@@ -54,7 +54,6 @@ const EmailSection = () => {
       </div>
 
       <div className="grid md:grid-cols-2 gap-12 items-start">
-        {/* Kiri - Teks & Icon */}
         <motion.div
           className="z-[37]"
           initial={{ opacity: 0, x: -50 }}
@@ -85,7 +84,6 @@ const EmailSection = () => {
           </div>
         </motion.div>
 
-        {/* Kanan - Form */}
         <motion.div
           className="z-[40]"
           initial={{ opacity: 0, x: 50 }}

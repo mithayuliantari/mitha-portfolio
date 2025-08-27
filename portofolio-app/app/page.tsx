@@ -1,6 +1,5 @@
-import Encryption from "@/components/main/Encryption";
 import Hero from "@/components/main/Hero";
-import Skills from "@/components/main/Skills";
+import Skills from "@/components/main/CircleLayout";
 import AboutSection from "@/components/main/AboutSection";
 import ProjectsSection from "@/components/main/ProjectsSection";
 import EmailSection from "@/components/main/EmailSection";
@@ -9,27 +8,20 @@ import BlogSection from "@/components/main/BlogSection";
 
 export default async function Home() {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL!;
-  const res = await fetch(`${apiUrl}/api/blogs`, { cache: "no-store" });
-  const blogs = res.ok ? await res.json() : [];
+  const res = await fetch(`${apiUrl}/api/blogs?per_page=9`, { cache: "no-store" });
+  const json = res.ok ? await res.json() : { data: [] };
+  const blogs = json.data ?? [];
 
   return (
     <main className="h-full w-full">
-      {/* Hero tidak diberi padding container */}
       <Hero />
-
-      {/* Bagian lainnya diberi padding */}
       <div className="flex flex-col gap-20 px-4 sm:px-6 md:px-12 lg:px-24 mx-auto">
-        <Skills />
-        <Encryption />
         <AboutSection />
+        <Skills />
         <ProjectsSection />
-        
-        {/* Kirim blogs ke BlogSection */}
         <BlogSection blogs={blogs} />
-
         <EmailSection />
       </div>
-
       <Footer />
     </main>
   );

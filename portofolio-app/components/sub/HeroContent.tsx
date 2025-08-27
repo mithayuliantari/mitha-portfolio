@@ -1,84 +1,72 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import { slideInFromLeft, slideInFromRight, slideInFromTop } from '@/utils/motion';
-import { SparklesIcon } from '@heroicons/react/24/solid';
-import Image from 'next/image';
+import Image from "next/image";
 
-const HeroContent = () => {
+export default function Hero() {
   return (
-  <motion.div 
-    initial="hidden"
-    animate="visible"
-    className="flex flex-col md:flex-row items-center justify-center 
-              px-4 sm:px-6 md:px-12 lg:px-24 mt-32 md:mt-40 w-full z-[20] gap-10"
-  >
-    {/* Bagian kiri */}
-    <div className="h-full w-full flex flex-col gap-5 justify-center text-start">
-      {/* Kotak Welcome */}
-      <div className="relative top-[90px] sm:top-[80px] md:top-[40px] lg:top-[30px] flex flex-col">
-        <motion.div
-          variants={slideInFromTop}
-          className="Welcome-box py-2 px-3 border border-[#7042f88b] opacity-90 flex items-center w-max "
-        >
-          <SparklesIcon className="text-[#b49bff] mr-2 h-5 w-5" />
-          <h1 className="Welcome-text text-[13px]">My Portofolio</h1>
-        </motion.div>
+    <section className="relative w-full min-h-screen flex items-center justify-center text-center px-4 overflow-hidden z-[20] mt-10">
+      <div className="absolute top-4 left-0 hidden sm:block">
+        <Image
+          src="/image-1.png"
+          alt="API Illustration"
+          width={800}
+          height={800}
+          className="w-[80px] sm:w-[120px] md:w-[160px] lg:w-[200px] object-contain float-anim"
+        />
+      </div>
 
-        {/* Judul utama */}
-        <motion.div
-          variants={slideInFromLeft(0.5)}
-          className="flex flex-col gap-6 mt-6 text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white max-w-[600px]"
-        >
-          <span>
-            Student developer
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500">
-              {" "}building web{" "}
-            </span>
-            projects with curiosity
-          </span>
-        </motion.div>
+      <div className="absolute top-4 right-0 hidden sm:block">
+        <Image
+          src="/image-2.png"
+          alt="API Illustration"
+          width={800}
+          height={800}
+          className="w-[80px] sm:w-[120px] md:w-[160px] lg:w-[200px] object-contain float-anim"
+        />
+      </div>
 
-        {/* Paragraf */}
-        <motion.p
-          variants={slideInFromLeft(0.8)}
-          className="text-sm sm:text-base md:text-lg text-gray-400 my-5 max-w-[600px]"
-        >
-          I&apos;m a Software Engineering student with a passion for web development. I enjoy learning by building simple and user-friendly projects.
-        </motion.p>
-
-        {/* Tombol Download */}
-        <motion.a
+      <div className="relative z-10 max-w-3xl px-2 sm:px-4">
+        <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-white">
+          Curiosity-driven{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
+            web developer
+          </span>{" "}
+          building <br className="hidden sm:block" /> creative projects
+        </h1>
+        <p className="text-gray-300 text-sm sm:text-base md:text-lg mb-8 leading-relaxed">
+          I&apos;m passionate about web development and enjoy learning by creating simple, functional, and user-friendly projects.{" "}
+          <br className="hidden sm:block" />
+          I&apos;m always curious to explore new tools and frameworks to improve my skills.
+        </p>
+        <a
           href="/cv-mitha.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          variants={slideInFromLeft(1)}
-          className="py-2 button-primary text-center text-white cursor-pointer rounded-lg max-w-[200px]"
+          className="py-3 px-6 sm:py-4 sm:px-10 button-primary text-center text-white cursor-pointer rounded-lg max-w-[200px] inline-block text-sm sm:text-base"
         >
           Download CV
-        </motion.a>
+        </a>
       </div>
-      
-    </div>
 
-    {/* Bagian kanan (gambar icon) */}
-    <motion.div
-      variants={slideInFromRight(0.8)}
-      className="w-full h-full flex justify-center items-center"
-    >
-      <div className="relative top-20 sm:top-8 md:top-10 w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] xl:w-[650px] xl:h-[650px]">
+      <div className="absolute bottom-4 left-0 hidden sm:block">
         <Image
-          src="/mainIconsdark.svg"
-          alt="work icons"
-          fill
-          style={{ objectFit: 'contain' }}
-          sizes="(max-width: 768px) 250px, (max-width: 1200px) 400px, 650px"
+          src="/image-3.png"
+          alt="API Illustration"
+          width={800}
+          height={800}
+          className="w-[80px] sm:w-[120px] md:w-[160px] lg:w-[200px] object-contain zoom-anim"
         />
       </div>
-    </motion.div>
-  </motion.div>
-  );
-};
 
-export default HeroContent;
+      <div className="absolute bottom-4 right-0 hidden sm:block">
+        <Image
+          src="/image-4.png"
+          alt="API Illustration"
+          width={800}
+          height={800}
+          className="w-[80px] sm:w-[120px] md:w-[160px] lg:w-[200px] object-contain zoom-anim"
+        />
+      </div>
+    </section>
+  );
+}

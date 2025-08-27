@@ -25,7 +25,6 @@ const ProjectCard = ({
   const [showIcons, setShowIcons] = useState(false);
 
   const handleToggleIcons = () => {
-    // Toggle aktif saat layar kecil (HP/tab)
     if (window.innerWidth <= 1024) {
       setShowIcons(!showIcons);
     }
@@ -77,10 +76,19 @@ const ProjectCard = ({
         </div>
       </div>
 
-      <div className="text-white rounded-b-xl mt-3 bg-white/10 backdrop-blur-sm border border-white/20 py-6 px-4">
+      <div className="text-white rounded-b-xl mt-3 bg-[#3c087e]/10 backdrop-blur-sm border border-[#3c087e]/30 py-6 px-4">
         <h5 className="text-lg md:text-xl font-semibold mb-2">{title}</h5>
         <p className="text-[#ADB7BE] text-sm md:text-base">{description}</p>
+
+        <button
+          onClick={() => window.location.href = `/project/${title.toLowerCase().replace(/\s+/g, '-')}`}
+          className="mt-4 px-4 py-2 button-primary text-center text-white cursor-pointer rounded-lg max-w-[200px]"
+        >
+          Project Detail
+        </button>
       </div>
+
+      
     </motion.div>
   );
 };
