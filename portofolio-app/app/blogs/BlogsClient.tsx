@@ -67,12 +67,14 @@ export default function BlogsClient() {
     [categories.length]
   );
 
-  useEffect(() => {
+    useEffect(() => {
     const controller = new AbortController();
     setSelectedCategory(categoryFromUrl);
     fetchData(categoryFromUrl, controller.signal);
     return () => controller.abort();
-  }, [categoryFromUrl, fetchData]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [categoryFromUrl]);
+
 
   const handleCategoryClick = (slug: string) => {
     setSelectedCategory(slug);

@@ -1,3 +1,4 @@
+// app/blogs/page.tsx
 import { Suspense } from "react";
 import BlogsClient from "@/app/blogs/BlogsClient";
 
@@ -8,9 +9,13 @@ export default function BlogsPage() {
         All Blogs
       </h1>
 
-      <Suspense fallback={<div className="flex justify-center items-center min-h-[40vh]">
-        <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-      </div>}>
+      <Suspense
+        fallback={
+          <div className="flex justify-center items-center min-h-[40vh]">
+            <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+          </div>
+        }
+      >
         <BlogsClient />
       </Suspense>
     </div>
