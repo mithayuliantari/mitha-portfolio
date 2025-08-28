@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CalendarIcon } from "@heroicons/react/24/outline";
+import Image from "next/image";
 
 type BlogDetail = {
   title: string;
@@ -11,15 +12,22 @@ type BlogDetail = {
   created_at: string;
 };
 
+type PageProps = {
+  params: {
+    slug: string;
+  };
+};
+
 async function getBlog(slug: string): Promise<BlogDetail> {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/blogs/${slug}`, {
     cache: "no-store",
   });
+  if (!res.ok) throw new Error("Failed to fetch blog");
   return res.json();
 }
 
-export default async function BlogDetail({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+export default async function BlogDetail({ params }: PageProps) {
+  const { slug } = params;
   const data = await getBlog(slug);
 
   return (
@@ -46,9 +54,11 @@ export default async function BlogDetail({ params }: { params: Promise<{ slug: s
           </div>
 
           {data.image && (
-            <img
+            <Image
               src={data.image}
               alt={data.title}
+              width={800}
+              height={500}
               className="w-full h-auto rounded-xl border border-gray-700 mt-10"
             />
           )}
@@ -79,7 +89,6 @@ export default async function BlogDetail({ params }: { params: Promise<{ slug: s
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mt-10">
             <Link
               href="/blogs"
-              prefetch={true}
               className="relative inline-flex z-[89] items-center mt-6 gap-2 pr-2 bg-[#7042f8] text-white font-semibold rounded-md shadow-md hover:bg-[#541ee3] transition-all duration-300 w-fit"
             >
               <span className="flex items-center justify-center w-8 h-10 bg-white text-[#7042f8] font-bold rounded-md shadow">
@@ -90,7 +99,6 @@ export default async function BlogDetail({ params }: { params: Promise<{ slug: s
 
             <Link
               href={`/blogs?category=${data.category.slug}`}
-              prefetch
               className="relative inline-flex z-[89] items-center gap-2 pr-2 bg-[#7042f8] text-white font-semibold rounded-md shadow-md hover:bg-[#541ee3] transition-all duration-300 w-fit"
             >
               <span className="flex items-center justify-center w-8 h-10 bg-white text-[#7042f8] font-bold rounded-md shadow">
