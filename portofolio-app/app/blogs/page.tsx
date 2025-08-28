@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useCallback } from "react";
 import Image from "next/image";
-// import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
 import { CalendarIcon } from "@heroicons/react/24/outline";
 
@@ -33,42 +32,44 @@ export default function BlogsPage() {
     [searchParams]
   );
 
-  const toArray = <T,>(payload: any): T[] => {
-    if (Array.isArray(payload)) return payload as T[];
-    if (Array.isArray(payload?.data)) return payload.data as T[];
-    if (payload?.data && typeof payload.data === "object") return [];
-    return [];
+type ApiResponse<T> = { data: T[] };
+
+  const toArray = <T,>(payload: ApiResponse<T> | T[]): T[] => {
+    if (Array.isArray(payload)) return payload;
+    return payload.data ?? [];
   };
 
-  async function fetchData(category: string = "all", signal?: AbortSignal) {
-    try {
-      // setLoading(true);
-      let url = `${process.env.NEXT_PUBLIC_API_URL}/api/blogs?per_page=20`;
-      if (category !== "all") {
-        url += `&category=${encodeURIComponent(category)}`;
-      }
+  const fetchData = useCallback(
+    async (category: string = "all", signal?: AbortSignal) => {
+      try {
+        let url = `${process.env.NEXT_PUBLIC_API_URL}/api/blogs?per_page=20`;
+        if (category !== "all") {
+          url += `&category=${encodeURIComponent(category)}`;
+        }
 
-      const resBlogs = await fetch(url, { signal });
-      const jsonBlogs = await resBlogs.json();
-      setBlogs(toArray<BlogItem>(jsonBlogs));
+        const resBlogs = await fetch(url, { signal });
+        const jsonBlogs = await resBlogs.json();
+        setBlogs(toArray<BlogItem>(jsonBlogs));
 
-      if (categories.length === 0) {
-        const resCats = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/categories`,
-          { signal }
-        );
-        const jsonCats = await resCats.json();
-        setCategories(toArray<Category>(jsonCats));
+        if (categories.length === 0) {
+          const resCats = await fetch(
+            `${process.env.NEXT_PUBLIC_API_URL}/api/categories`,
+            { signal }
+          );
+          const jsonCats = await resCats.json();
+          setCategories(toArray<Category>(jsonCats));
+        }
+      } catch (e: unknown) {
+        if ((e as any)?.name === "AbortError") {
+        } else {
+          setBlogs([]);
+        }
+      } finally {
+        setLoading(false);
       }
-    } catch (e: any) {
-      if (e?.name === "AbortError") {
-      }else{
-        setBlogs([]);
-      }
-    } finally {
-      setLoading(false);
-    }
-  }
+    },
+    [categories.length]
+  );
 
   useEffect(() => {
     const controller = new AbortController();

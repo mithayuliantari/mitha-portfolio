@@ -39,3 +39,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# additional ignores for nested folders
+**/node_modules/
+**/.next/
+**/.cache/
+**/package-lock.json
+**/yarn.lock
+**/pnpm-lock.yaml
+
+# editor config
+.vscode/
