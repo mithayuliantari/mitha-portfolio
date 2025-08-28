@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation";
 import { CalendarIcon } from "@heroicons/react/24/outline";
 
+// ✅ Tipe data
 type BlogItem = {
   id: number;
   title: string;
@@ -17,6 +18,11 @@ type BlogItem = {
 };
 
 type Category = { name: string; slug: string };
+
+// ✅ Fungsi utilitas
+function toArray<T>(input: string): T[] {
+  return input.split(",").map((x) => x.trim()) as T[];
+}
 
 export default function BlogsPage() {
   const [blogs, setBlogs] = useState<BlogItem[]>([]);
@@ -31,13 +37,6 @@ export default function BlogsPage() {
     () => searchParams.get("category") ?? "all",
     [searchParams]
   );
-
-type ApiResponse<T> = { data: T[] };
-
-  const toArray = <T,>(payload: ApiResponse<T> | T[]): T[] => {
-    if (Array.isArray(payload)) return payload;
-    return payload.data ?? [];
-  };
 
   const fetchData = useCallback(
     async (category: string = "all", signal?: AbortSignal) => {
@@ -59,20 +58,18 @@ type ApiResponse<T> = { data: T[] };
           const jsonCats = await resCats.json();
           setCategories(toArray<Category>(jsonCats));
         }
-
       } catch (e: unknown) {
-        if ((e as Error)?.name === "AbortError") {
+        const error = e as Error;
+        if (error.name === "AbortError") {
           // silent abort
         } else {
           setBlogs([]);
         }
-
-
       } finally {
         setLoading(false);
       }
     },
-    [categories.length, toArray]
+    [categories.length]
   );
 
   useEffect(() => {
@@ -85,10 +82,12 @@ type ApiResponse<T> = { data: T[] };
   const handleCategoryClick = (slug: string) => {
     setSelectedCategory(slug);
     setLoading(true);
-    // fetchData(slug);
-    router.replace(slug === "all" ? "/blogs" : `/blogs?category=${encodeURIComponent(slug)}`, {
-      scroll: false,
-    });
+    router.replace(
+      slug === "all"
+        ? "/blogs"
+        : `/blogs?category=${encodeURIComponent(slug)}`,
+      { scroll: false }
+    );
   };
 
   return (

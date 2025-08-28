@@ -2,7 +2,6 @@ import Link from "next/link";
 import { CalendarIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 
-
 type BlogDetail = {
   title: string;
   slug: string;
@@ -19,12 +18,14 @@ type Props = {
   };
 };
 
+// ✅ Metadata untuk SEO dan validasi tipe params
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   return {
     title: `Blog: ${params.slug}`,
   };
 }
 
+// ✅ Fetch blog detail dari Laravel API
 async function getBlog(slug: string): Promise<BlogDetail> {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/blogs/${slug}`, {
     cache: "no-store",
@@ -33,10 +34,10 @@ async function getBlog(slug: string): Promise<BlogDetail> {
   return res.json();
 }
 
+// ✅ Komponen utama halaman blog detail
 export default async function Page({ params }: Props) {
   const { slug } = params;
   const data = await getBlog(slug);
-
 
   return (
     <section className="relative w-full min-h-screen flex flex-col items-center justify-center px-4 py-16 sm:py-20 md:py-24 lg:py-32 text-white z-[25]">
