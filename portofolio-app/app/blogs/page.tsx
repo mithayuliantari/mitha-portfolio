@@ -59,27 +59,28 @@ type ApiResponse<T> = { data: T[] };
           const jsonCats = await resCats.json();
           setCategories(toArray<Category>(jsonCats));
         }
+
       } catch (e: unknown) {
-        if ((e as any)?.name === "AbortError") {
+        if ((e as Error)?.name === "AbortError") {
+          // silent abort
         } else {
           setBlogs([]);
         }
+
+
       } finally {
         setLoading(false);
       }
     },
-    [categories.length]
+    [categories.length, toArray]
   );
 
   useEffect(() => {
     const controller = new AbortController();
     setSelectedCategory(categoryFromUrl);
     fetchData(categoryFromUrl, controller.signal);
-    return () => 
-    {
-      controller.abort();
-    };
-  }, [categoryFromUrl]);
+    return () => controller.abort();
+  }, [categoryFromUrl, fetchData]);
 
   const handleCategoryClick = (slug: string) => {
     setSelectedCategory(slug);
