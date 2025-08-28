@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import Link from "next/link";
 import { CalendarIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
@@ -12,7 +13,7 @@ type BlogDetail = {
   created_at: string;
 };
 
-type PageProps = {
+type Props = {
   params: {
     slug: string;
   };
@@ -26,9 +27,10 @@ async function getBlog(slug: string): Promise<BlogDetail> {
   return res.json();
 }
 
-export default async function BlogDetail({ params }: PageProps) {
+export default async function Page({ params }: Props) {
   const { slug } = params;
   const data = await getBlog(slug);
+
 
   return (
     <section className="relative w-full min-h-screen flex flex-col items-center justify-center px-4 py-16 sm:py-20 md:py-24 lg:py-32 text-white z-[25]">
