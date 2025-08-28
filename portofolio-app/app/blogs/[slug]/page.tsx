@@ -1,7 +1,7 @@
-
 import Link from "next/link";
 import { CalendarIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
+
 
 type BlogDetail = {
   title: string;
@@ -18,6 +18,12 @@ type Props = {
     slug: string;
   };
 };
+
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+  return {
+    title: "Blog Detail",
+  };
+}
 
 async function getBlog(slug: string): Promise<BlogDetail> {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/blogs/${slug}`, {
