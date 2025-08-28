@@ -5,7 +5,6 @@ import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation";
 import { CalendarIcon } from "@heroicons/react/24/outline";
 
-// ✅ Tipe data
 type BlogItem = {
   id: number;
   title: string;
@@ -19,7 +18,7 @@ type BlogItem = {
 
 type Category = { name: string; slug: string };
 
-// ✅ Fungsi utilitas
+// ✅ Fungsi utilitas stabil
 function toArray<T>(input: string): T[] {
   return input.split(",").map((x) => x.trim()) as T[];
 }
