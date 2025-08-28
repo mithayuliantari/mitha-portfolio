@@ -18,8 +18,8 @@ type Props = {
   };
 };
 
-// ✅ Metadata untuk SEO dan validasi tipe params
-export async function generateMetadata({ params }: { params: { slug: string } }) {
+// ✅ Metadata untuk SEO
+export async function generateMetadata({ params }: Props) {
   return {
     title: `Blog: ${params.slug}`,
   };
@@ -27,9 +27,11 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
 // ✅ Fetch blog detail dari Laravel API
 async function getBlog(slug: string): Promise<BlogDetail> {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/blogs/${slug}`, {
-    cache: "no-store",
-  });
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/blogs/${slug}`,
+    { cache: "no-store" }
+  );
+
   if (!res.ok) throw new Error("Failed to fetch blog");
   return res.json();
 }
