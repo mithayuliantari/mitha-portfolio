@@ -19,7 +19,7 @@ type Blog = {
 };
 
 export default function BlogSection({ blogs }: { blogs: Blog[] }) {
-  const limited = blogs.slice(0, 5); 
+  const limited = blogs.slice(0, 5);
 
   return (
     <section
@@ -51,12 +51,12 @@ export default function BlogSection({ blogs }: { blogs: Blog[] }) {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               whileHover={{
-                scale: 1.03,
-                transition: { type: "tween", duration: 0.3, ease: "easeOut" },
+                scale: 1.05,
+                transition: { type: "spring", stiffness: 220, damping: 20 },
               }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className={`bg-gradient-to-b from-[#1a1330] backdrop-blur-xl border border-[#2a1b4d] rounded-xl overflow-hidden shadow-md hover:shadow-lg flex flex-col transition ${spanClass}`}
+              className={`bg-gradient-to-b from-[#1a1330] backdrop-blur-xl border border-[#2a1b4d] rounded-xl overflow-hidden shadow-md hover:shadow-lg flex flex-col will-change-transform ${spanClass}`}
             >
               {blog.image ? (
                 <Image
@@ -117,7 +117,7 @@ export default function BlogSection({ blogs }: { blogs: Blog[] }) {
 
       <div className="mt-10 flex justify-center">
         <button
-          onClick={() => window.location.href = '/blogs'}
+          onClick={() => (window.location.href = "/blogs")}
           className="py-4 px-10 button-primary text-center text-white cursor-pointer rounded-lg max-w-[200px]"
         >
           All Blogs →
