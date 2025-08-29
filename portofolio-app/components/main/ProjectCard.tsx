@@ -31,13 +31,14 @@ const ProjectCard = ({
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      viewport={{ once: true }}
-      className="flex flex-col w-full"
-    >
+  <motion.div
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, delay: index * 0.1 }}
+    viewport={{ once: true }}
+    className="flex flex-col w-full h-[400px] md:h-[420px] lg:h-[440px]"
+  >
+
       <div
         onClick={handleToggleIcons}
         className="h-45 md:h-48 lg:h-50 rounded-t-xl relative group overflow-hidden cursor-pointer"
@@ -76,9 +77,11 @@ const ProjectCard = ({
         </div>
       </div>
 
-      <div className="text-white rounded-b-xl mt-3 bg-[#3c087e]/10 backdrop-blur-sm border border-[#3c087e]/30 py-6 px-4">
-        <h5 className="text-lg md:text-xl font-semibold mb-2">{title}</h5>
-        <p className="text-[#ADB7BE] text-sm md:text-base">{description}</p>
+      <div className="flex flex-col justify-between flex-grow text-white rounded-b-xl mt-3 bg-[#3c087e]/10 backdrop-blur-sm border border-[#3c087e]/30 py-6 px-4">
+        <div>
+          <h5 className="text-lg md:text-xl font-semibold mb-2">{title}</h5>
+          <p className="text-[#ADB7BE] text-sm md:text-base line-clamp-3">{description}</p>
+        </div>
 
         <button
           onClick={() => window.location.href = `/project/${title.toLowerCase().replace(/\s+/g, '-')}`}

@@ -18,14 +18,15 @@ type Props = {
   };
 };
 
-// ✅ Metadata untuk SEO
+
 export async function generateMetadata({ params }: Props) {
+  const { slug } = await params; 
   return {
-    title: `Blog: ${params.slug}`,
+    title: `Blog: ${slug}`,
   };
 }
 
-// ✅ Fetch blog detail dari Laravel API
+
 async function getBlog(slug: string): Promise<BlogDetail> {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/api/blogs/${slug}`,
@@ -36,20 +37,20 @@ async function getBlog(slug: string): Promise<BlogDetail> {
   return res.json();
 }
 
-// ✅ Komponen utama halaman blog detail
+
 export default async function Page({ params }: Props) {
-  const { slug } = params;
+  const { slug } = await params; 
   const data = await getBlog(slug);
 
   return (
-    <section className="relative w-full min-h-screen flex flex-col items-center justify-center px-4 py-16 sm:py-20 md:py-24 lg:py-32 text-white z-[25]">
-      <div className="w-full max-w-5xl mx-auto bg-white/5 backdrop-blur-sm border border-purple-500/40 rounded-2xl shadow-lg px-4 sm:px-6 md:px-10 lg:px-16 py-8">
+    <section className="relative w-full min-h-screen flex flex-col items-center justify-center px-4 mt-10 mb-16 sm:mb-20 md:mb-24 lg:mb-28 text-white z-[25]">
+      <div className="w-full max-w-5xl mx-auto bg-white/5 backdrop-blur-sm border border-purple-500/40 rounded-2xl shadow-lg px-4 sm:px-6 md:px-10 lg:px-16 mt-28">
         <div className="max-w-3xl mx-auto">
-          <h1 className="text-3xl md:text-4xl mt-16 font-bold text-white">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl mt-16 font-bold text-white leading-snug text-start">
             {data.title}
           </h1>
 
-          <div className="flex flex-wrap items-center gap-2 mt-4 text-gray-400 text-sm">
+          <div className="flex flex-wrap items-center gap-2 mt-4 text-gray-400 text-sm sm:justify-start">
             <CalendarIcon className="w-4 h-4" />
             {new Date(data.created_at).toLocaleDateString("en-US", {
               year: "numeric",
@@ -75,7 +76,7 @@ export default async function Page({ params }: Props) {
           )}
 
           <div
-            className="max-w-3xl mx-auto mt-6 text-white prose prose-invert prose-li:marker:text-white prose-ol:list-decimal prose-ul:list-disc text-sm md:text-base lg:text-lg"
+            className="max-w-3xl mx-auto mt-6 text-white prose prose-invert prose-li:marker:text-white prose-ol:list-decimal prose-ul:list-disc text-sm sm:text-base md:text-[17px] lg:text-lg"
             dangerouslySetInnerHTML={{ __html: data.content }}
           />
 
@@ -84,7 +85,7 @@ export default async function Page({ params }: Props) {
               <div className="text-center mt-20 mb-2 text-gray-400 font-semibold">
                 #Tag
               </div>
-              <div className="flex justify-center flex-wrap gap-2 mb-10">
+              <div className="flex justify-center flex-wrap gap-2 mb-10 px-2 sm:px-4">
                 {data.tags.map((tag) => (
                   <span
                     key={tag.slug}
@@ -97,7 +98,7 @@ export default async function Page({ params }: Props) {
             </>
           )}
 
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mt-10">
+          <div className="flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-4 mt-10">
             <Link
               href="/blogs"
               className="relative inline-flex z-[89] items-center mt-6 gap-2 pr-2 bg-[#7042f8] text-white font-semibold rounded-md shadow-md hover:bg-[#541ee3] transition-all duration-300 w-fit"
@@ -110,12 +111,12 @@ export default async function Page({ params }: Props) {
 
             <Link
               href={`/blogs?category=${data.category.slug}`}
-              className="relative inline-flex z-[89] items-center gap-2 pr-2 bg-[#7042f8] text-white font-semibold rounded-md shadow-md hover:bg-[#541ee3] transition-all duration-300 w-fit"
+              className="relative inline-flex z-[89] items-center gap-2 pl-2 bg-[#7042f8] text-white font-semibold rounded-md shadow-md hover:bg-[#541ee3] transition-all duration-300 w-fit"
             >
+              <span>More in {data.category.name}</span>
               <span className="flex items-center justify-center w-8 h-10 bg-white text-[#7042f8] font-bold rounded-md shadow">
                 →
               </span>
-              <span>More in {data.category.name}</span>
             </Link>
           </div>
 

@@ -42,7 +42,7 @@ const EmailSection = () => {
   return (
     <motion.section
       id="contact"
-      className="relative z-[38] py-24 px-4 sm:px-8 md:px-16 lg:px-32"
+      className="relative z-[38] mt-16 sm:mt-20 md:mt-24 lg:mt-28 mb-16 sm:mb-20 md:mb-24 lg:mb-28 px-4 sm:px-8 md:px-16 lg:px-32"
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}

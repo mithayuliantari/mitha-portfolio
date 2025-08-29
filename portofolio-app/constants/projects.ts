@@ -46,7 +46,7 @@ export const projectsDetailData = [
       "Review section => contains reviews from visitors who have visited Saffari Ville"
     ],
     duration: "1 Week",
-    createdBy: "Mitha Yuliantari",
+    createdBy: ["Mitha Yuliantari"],
     technologies: ["Bootstrap", "HTML", "CSS"],
     previewUrl: "https://safari-ville.netlify.app",
     screenshots: [
@@ -57,8 +57,8 @@ export const projectsDetailData = [
   },
   
   {
-    slug: "personal-portfolio",
-    title: "Personal Portfolio",
+    slug: "my-portfolio-website",
+    title: "My Portfolio Website",
     image: "/images/projects/project4.png",
     description: "This is my personal portfolio website that I created to showcase my projects and skills as a Junior Web Developer. I built this website using Next.js and Tailwind CSS to ensure a modern and responsive design.",
     goals: [
@@ -73,7 +73,7 @@ export const projectsDetailData = [
       "Contact => provides a form for visitors to get in touch with me"
     ],
     duration: "2 Weeks",
-    createdBy: "Mitha Yuliantari",
+    createdBy: ["Mitha Yuliantari"],
     technologies: ["Next.js", "Tailwind CSS", "Vercel"],
     previewUrl: "https://mitha-portfolio-ten.vercel.app",
     screenshots: [
@@ -99,7 +99,7 @@ export const projectsDetailData = [
       "Review section => contains reviews from visitors who have visited forest nest",
     ],
     duration: "1 Week",
-    createdBy: "Mitha Yuliantari",
+    createdBy: ["Mitha Yuliantari"],
     technologies: ["HTML", "CSS"],
     previewUrl: "https://forestnest.netlify.app",
     screenshots: [

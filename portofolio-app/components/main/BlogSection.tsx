@@ -19,12 +19,12 @@ type Blog = {
 };
 
 export default function BlogSection({ blogs }: { blogs: Blog[] }) {
-  const limited = blogs.slice(0, 6); 
+  const limited = blogs.slice(0, 5); 
 
   return (
     <section
       id="blog"
-      className="relative w-full min-h-screen flex flex-col items-center justify-center px-4 py-16 sm:py-20 md:py-24 lg:py-32 text-white z-[39]"
+      className="relative w-full min-h-screen flex flex-col items-center justify-center px-4 mt-10 sm:mt-12 md:mt-16 lg:mt-20 mb-16 sm:mb-20 md:mb-24 lg:mb-28 text-white z-[39]"
     >
       <motion.h2
         variants={slideInFromTop}

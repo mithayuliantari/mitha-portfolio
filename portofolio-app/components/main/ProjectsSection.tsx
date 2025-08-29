@@ -16,7 +16,7 @@ const projectsData = [
   },
   {
     id: 2,
-    title: "Saffari Ville",
+    title: "Safari Ville",
     description: "A simple landing page designed with Bootstrap, currently optimized for desktop.",
     image: "/images/projects/project3.png",
     gitUrl: "https://github.com/mithayuliantari/Saffari-Ville",
@@ -43,7 +43,7 @@ const projectsData = [
 
 const ProjectsSection = () => {
   return (
-    <div id="projects" className="z-[35] py-12 px-4 sm:px-6 lg:px-8 md:mb-8">
+    <div id="projects" className="z-[35] mt-16 sm:mt-20 md:mt-24 lg:mt-32 mb-16 sm:mb-20 md:mb-24 lg:mb-26 px-4 sm:px-6 lg:px-8">
       <div className="max-w-[1400px] mx-auto">
         <motion.h2
           variants={slideInFromTop}

@@ -21,12 +21,12 @@ const Navbar = () => {
             className='cursor-pointer hover:animate-slowspin'
           />
           <span 
-          className='ml-2 font-bold text-gray-300 hidden md:block'>Junior Web Developer</span>
+          className='ml-2 font-bold text-gray-300 hidden md:block'>Mitha Yuliantari</span>
         </a>
 
-        <div className='hidden md:flex items-center gap-5'>
-          <div className='flex gap-20 px-6 py-2 rounded-full bg-[#0300145e] border border-[#7042f861] text-gray-200'>
-            <a href="#skills" className='hover:text-[#7042f8]'>Skills</a>
+        <div className='hidden sm:flex md:flex items-center gap-5'>
+          <div className='flex gap-20 px-6 py-2 rounded-full bg-[#0300145e] border border-[#7042f861] text-gray-200 hover:shadow-md transition'>
+            <a href="#home" className='hover:text-[#7042f8]'>Home</a>
             <a href="#about-me" className='hover:text-[#7042f8]'>About Me</a>
             <a href="#projects" className='hover:text-[#7042f8]'>Projects</a>
             <a href="#blog" className='hover:text-[#7042f8]'>Blog</a>
@@ -68,7 +68,7 @@ const Navbar = () => {
       </div>
 
       {isOpen && (
-        <div className='md:hidden flex flex-col items-center gap-4 py-4 text-gray-200 bg-[#0e0a1c]/80'>
+        <div className='md:hidden flex flex-col items-center gap-4 py-4 text-gray-200 bg-[#0e0a1c]/80 overflow-hidden'>
           <a href="#about-me" onClick={() => setIsOpen(false)} className='hover:text-[#7042f8]'>About Me</a>
           <a href="#skills" onClick={() => setIsOpen(false)} className='hover:text-[#7042f8]'>Skills</a>
           <a href="#projects" onClick={() => setIsOpen(false)} className='hover:text-[#7042f8]'>Projects</a>

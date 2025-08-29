@@ -52,13 +52,13 @@ export default function CircleLayout() {
   const center = 250;
 
   return (
-    <section className="relative w-full min-h-screen flex flex-col items-center justify-center px-4 py-16 sm:py-20 md:py-24 lg:py-32 text-white z-[25]">
+    <section className="relative w-full min-h-screen flex flex-col items-center justify-center px-4 mt-0 mb-16 sm:mb-20 md:mb-24 lg:mb-28 text-white z-[25]">
       <motion.div
         variants={slideInFromTop}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="Welcome-box flex items-center py-2 px-3 border border-[#7042f88b] opacity-[0.9] mb-12 w-max"
+        className="Welcome-box flex items-center py-2 px-3 border border-[#7042f88b] opacity-[0.9] mb-4 w-max"
       >
         <SparklesIcon className="text-[#b49bff] mr-2 h-5 w-5" />
         <h1 className="Welcome-text text-sm">My Skills</h1>

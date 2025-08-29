@@ -5,7 +5,7 @@ import BlogsClient from "@/app/blogs/BlogsClient";
 export default function BlogsPage() {
   return (
     <div className="min-h-[70vh] px-4 sm:px-6 md:px-12 lg:px-24 py-10 mt-2 mb-10 z-89">
-      <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-white mb-8 mt-20 text-center">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-white mb-8 mt-20 text-center leading-snug">
         All Blogs
       </h1>
 

@@ -42,8 +42,9 @@ export default function BlogsClient() {
         }
 
         const resBlogs = await fetch(url, { signal });
-        const jsonBlogs: BlogItem[] = await resBlogs.json();
-        setBlogs(jsonBlogs);
+        const jsonBlogs = await resBlogs.json();
+        setBlogs(Array.isArray(jsonBlogs) ? jsonBlogs : (jsonBlogs.data ?? []));
+
 
         if (categories.length === 0) {
           const resCats = await fetch(
@@ -90,7 +91,7 @@ export default function BlogsClient() {
   return (
     <>
       <div className="mb-6">
-        <div className="flex gap-2 flex-wrap justify-center items-center relative z-89">
+        <div className="flex gap-2 flex-wrap justify-center items-center relative z-89 px-2 sm:px-4">
           <button
             onClick={() => handleCategoryClick("all")}
             className={`px-3 py-2 cursor-pointer rounded transition ${
@@ -128,11 +129,11 @@ export default function BlogsClient() {
               No blogs found.
             </h2>
           ) : (
-            <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-28">
+            <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 mt-28">
               {blogs.map((b) => (
                 <div
                   key={b.id}
-                  className="bg-gradient-to-b from-[#1a1330] backdrop-blur-xl border border-[#2a1b4d] rounded-xl overflow-hidden shadow-md hover:shadow-lg flex flex-col transition z-89"
+                  className="bg-gradient-to-b from-[#1a1330] backdrop-blur-xl border border-[#2a1b4d] rounded-xl overflow-hidden shadow-md hover:shadow-lg flex flex-col transition z-89 h-full"
                 >
                   {b.image ? (
                     <Image
@@ -158,10 +159,10 @@ export default function BlogsClient() {
                       })}
                     </div>
 
-                    <h3 className="text-lg md:text-xl font-semibold mb-2 text-white">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-2 text-white">
                       {b.title}
                     </h3>
-                    <p className="text-[#ADB7BE] text-sm md:text-base flex-1">
+                    <p className="text-[#ADB7BE] text-sm sm:text-base md:text-[17px] flex-1">
                       {b.excerpt ?? ""}
                     </p>
 

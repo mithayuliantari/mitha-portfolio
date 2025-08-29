@@ -39,6 +39,8 @@ const TAB_DATA = [
     content: (
       <ul className="list-disc pl-4">
         <li>Internship at ASANKA (December 2024 - March 2025)</li>
+        <li>Active member of the Red Cross Youth (PMR) at SMK Negeri 1 Denpasar</li>
+        <li>Health Division Coordinator at the School Health Unit (UKS)</li>
       </ul>
     )
   }
@@ -55,9 +57,10 @@ const AboutSection = () => {
   };
 
   return (
-    <section id="about-me" 
-      className="relative w-full min-h-screen flex items-center justify-center px-4 py-16 sm:py-20 md:py-24 lg:py-32 text-white z-[25]"
-      >
+    <section
+      id="about-me"
+      className="relative w-full min-h-screen flex items-center justify-center px-4 mt-6 sm:mt-10 md:mt-14 lg:mt-16  text-white z-[25]"
+    >
       <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         
         <motion.div
@@ -99,7 +102,7 @@ const AboutSection = () => {
           </h2>
 
           <p className="text-sm sm:text-base lg:text-lg leading-relaxed max-w-[550px]">
-            My name is <strong>Kadek Mitha Yuliantari</strong>, and I&apos;m a student at SMK Negeri 1 Denpasar majoring in Software Engineering. I have built several simple projects using HTML, CSS, and JavaScript. Although I&apos;m still learning, I&apos;m highly motivated to improve my skills and gain more experience in programming. I enjoy solving problems, learning from others, and working both independently and as part of a team. Currently, I&apos;m doing an internship to deepen my understanding of real-world development practices.
+            My name is <strong>Kadek Mitha Yuliantari</strong>, and I&apos;m a student at SMK Negeri 1 Denpasar where I major in Software Engineering. I have built several simple projects using HTML, CSS, and JavaScript. While still learning, I&apos;m highly motivated to improve my skills and gain more experience in programming. I enjoy solving problems, learning from others, and working both independently and in a team. I&apos;m currently interning to deepen my understanding of real-world development practices.
           </p>
 
           <div className="flex flex-wrap gap-4 mt-8">

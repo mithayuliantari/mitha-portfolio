@@ -15,11 +15,15 @@ const Footer = () => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      className='z-[42] footer border border-t-[#33353F] border-l-transparent border-r-transparent text-white'
+      className="z-[42] footer border-t border-[#33353F] text-white mt-10 sm:mt-12 md:mt-14 lg:mt-18"
     >
-      <div className='container p-12 flex justify-between'>
-        <span>Junior Web Developer</span>
-        <p className='text-slate-400'>All right reserved.</p>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+        <span className="text-base sm:text-lg font-semibold tracking-wide">
+          Mitha Yuliantari
+        </span>
+        <p className="text-sm sm:text-base text-slate-400">
+          All rights reserved © {new Date().getFullYear()}
+        </p>
       </div>
     </motion.footer>
   );
